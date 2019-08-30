@@ -1,0 +1,8 @@
+Instrument.create(name: "Schecter Electric Guitar")
+Instrument.create(name: "Ibanez Acoustic Guitar")
+Instrument.create(name: "Squier Electric Guitar")
+Instrument.create(name: "Yamaha Digital Piano")
+Instrument.create(name: "Pearl Acoustic Drumset")
+Instrument.create(name: "Zildjian Cymbals")
+Instrument.create(name: "Shure Microphone")
+Instrument.create(name: "Roland Electric Drumset")
