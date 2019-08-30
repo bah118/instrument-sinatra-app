@@ -16,7 +16,12 @@ class InstrumentsController < ApplicationController
     
     post '/instruments' do
         @instrument = Instrument.new(params[:instrument])
-
+        if @instrument.save
+            redirect '/instruments'
+        else
+            @errors = @instrument.errors.full_messages
+            erb :'instruments/new'
+        end
     end
 
     get '/instruments/:id/edit' do
