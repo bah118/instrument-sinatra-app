@@ -32,8 +32,17 @@ class InstrumentsController < ApplicationController
     get '/instruments/:id/edit' do
         redirect_if_not_signed_in
         set_instrument
-        erb :'instruments/edit'
+        if @instrument.user == current_user
+            erb :'instruments/edit'
+        else
+            flash[:notice] = "Unauthorized."
+            redirect '/'
+        end
     end
+
+
+
+
 
     patch '/instruments/:id' do
         redirect_if_not_signed_in
