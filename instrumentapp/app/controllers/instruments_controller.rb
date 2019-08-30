@@ -2,20 +2,24 @@ class InstrumentsController < ApplicationController
     use Rack::Flash
 
     get '/instruments' do
+        redirect_if_not_signed_in
         @instruments = Instrument.all
         erb :'instruments/index'
     end
 
     get '/instruments/new' do
+        redirect_if_not_signed_in
         erb :'instruments/new'
     end
     
     get '/instruments/:id' do
+        redirect_if_not_signed_in
         set_instrument
         erb :'instruments/show'
     end
     
     post '/instruments' do
+        redirect_if_not_signed_in
         @instrument = Instrument.new(params[:instrument])
         if @instrument.save
             redirect '/instruments'
@@ -26,11 +30,13 @@ class InstrumentsController < ApplicationController
     end
 
     get '/instruments/:id/edit' do
+        redirect_if_not_signed_in
         set_instrument
         erb :'instruments/edit'
     end
 
     patch '/instruments/:id' do
+        redirect_if_not_signed_in
         set_instrument
         if @instrument.update(params[:instrument])
             redirect "/instruments/#{@instrument.id}"
@@ -41,6 +47,7 @@ class InstrumentsController < ApplicationController
     end
     
     delete '/instruments/:id' do
+        redirect_if_not_signed_in
         set_instrument
         @instrument.destroy
         redirect '/instruments'
