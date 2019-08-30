@@ -31,8 +31,12 @@ class InstrumentsController < ApplicationController
 
     patch '/instruments/:id' do
         set_instrument
-        @instrument.update(params[:instrument])
-        redirect "/instruments/#{@instrument.id}"
+        if @instrument.update(params[:instrument])
+            redirect "/instruments/#{@instrument.id}"
+        else
+            @errors = @instrument.errors.full_messages
+            erb :'instruments/edit'
+        end
     end
     
     delete '/instruments/:id' do

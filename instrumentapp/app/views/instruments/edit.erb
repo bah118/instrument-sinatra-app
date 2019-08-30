@@ -1,5 +1,13 @@
 <h1>Edit Instrument</h1>
 
+<% if @errors %>
+    <ul class="pink">
+        <% @errors.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <form action="/instruments/<%= @instrument.id %>" method="post">
     <input type="hidden" value="patch" name="_method">
     <div class="input-field">
