@@ -25,6 +25,9 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
     
+    def redirect_if_not_signed_in
+      redirect '/login' if !is_logged_in?
+    end
     
   end
   
