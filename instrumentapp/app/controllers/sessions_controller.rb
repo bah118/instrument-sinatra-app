@@ -21,6 +21,18 @@ class SessionsController < ApplicationController
         erb :'sessions/login'
     end
 
+    post '/login' do
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            flash[:notice] = "You are signed in!"
+            redirect '/'
+        else
+            @errors = user.errors.full_messages
+            erb :'sessions/login'
+        end
+    end
+
     get '/logout' do
         session.clear
         redirect '/'
