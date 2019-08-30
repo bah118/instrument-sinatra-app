@@ -8,4 +8,9 @@ class SessionsController < ApplicationController
         erb :'sessions/login'
     end
 
+    get '/logout' do
+        redirect '/'
+    end
+    
+
 end
