@@ -15,7 +15,12 @@
                     <td><%= instrument.name %></td>
                     <td><a href="/instruments/<%= instrument.id %>">View</a></td>
                     <td><a href="/instruments/<%= instrument.id %>/edit">Edit</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td>
+                        <form action="/instruments/<%= instrument.id %>" method="post">
+                            <input type="hidden" id="hidden" value="delete" name="_method">
+                            <input type="submit" value="Delete" class="btn">
+                        </form>
+                    </td>
                 </tr>        
             <% end %>
         </tbody>

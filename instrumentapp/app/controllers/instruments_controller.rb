@@ -29,6 +29,12 @@ class InstrumentsController < ApplicationController
         @instrument.update(params[:instrument])
         redirect "/instruments/#{@instrument.id}"
     end
+    
+    delete '/instruments/:id' do
+        set_instrument
+        @instrument.destroy
+        redirect '/instruments'
+    end
 
     private
         def set_instrument
