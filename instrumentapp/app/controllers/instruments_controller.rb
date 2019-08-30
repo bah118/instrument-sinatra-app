@@ -1,4 +1,5 @@
 class InstrumentsController < ApplicationController
+    use Rack::Flash
 
     get '/instruments' do
         @instruments = Instrument.all
