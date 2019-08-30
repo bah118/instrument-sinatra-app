@@ -3,7 +3,7 @@
 <form action="/instruments/<%= @instrument.id %>" method="post">
     <input type="hidden" value="patch" name="_method">
     <div class="input-field">
-        <input placeholder="Placeholder" name= "instrument_name" id="instrument_name" type="text" class="validate" value="<%= @instrument.name %>">
+        <input placeholder="Placeholder" name="instrument[name]" id="instrument_name" type="text" class="validate" value="<%= @instrument.name %>">
           <label for="instrument_name">Instrument Name</label>
     </div>
     <input type="submit" value="Update Instrument" class="btn">
