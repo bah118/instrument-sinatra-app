@@ -3,7 +3,7 @@ class InstrumentsController < ApplicationController
 
     get '/instruments' do
         redirect_if_not_signed_in
-        @instruments = Instrument.all
+        @instruments = current_user.instruments
         erb :'instruments/index'
     end
 
@@ -20,7 +20,7 @@ class InstrumentsController < ApplicationController
     
     post '/instruments' do
         redirect_if_not_signed_in
-        @instrument = Instrument.new(params[:instrument])
+        @instrument = current_user.instruments.build(params[:instrument])
         if @instrument.save
             redirect '/instruments'
         else
