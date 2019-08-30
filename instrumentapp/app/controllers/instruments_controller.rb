@@ -15,8 +15,8 @@ class InstrumentsController < ApplicationController
     end
     
     post '/instruments' do
-        instrument = Instrument.create(params[:instrument])
-        redirect '/instruments'
+        @instrument = Instrument.new(params[:instrument])
+
     end
 
     get '/instruments/:id/edit' do
