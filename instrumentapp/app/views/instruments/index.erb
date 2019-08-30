@@ -1,0 +1,22 @@
+<h1>Instrument List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>   
+        </thead>
+
+        <tbody>
+            <% @instruments.each do |instrument| %>
+                <tr>
+                    <td><%= instrument.name %></td>
+                    <td><a href="#">View</a></td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Delete</a></td>
+                </tr>        
+            <% end %>
+        </tbody>
+    </table>
