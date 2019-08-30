@@ -16,8 +16,19 @@ class InstrumentsController < ApplicationController
     
     post '/instruments' do
         # @instruments = Instrument.all
-        @instrument = Instrument.create(name: params[:instrument_name])
+        # @instrument = Instrument.create(name: params[:instrument_name])
+        instrument = Instrument.create(params)
         redirect '/instruments'
+    end
+
+    get '/instruments/:id/edit' do
+        @instrument = Instrument.find_by_id(params[:id])
+        erb :'instruments/edit'
+    end
+
+    #patch request
+    patch '/instruments/:id' do
+        @instrument = Instrument.find_by_id(params[:id])
     end
 
 end
